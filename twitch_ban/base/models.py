@@ -12,3 +12,8 @@ class Chanel(models.Model):
     spectators = models.IntegerField(default=0)
     subscribers = models.IntegerField(default=0)
     notes = models.TextField(default='')
+
+
+class TelegramAccount(models.Model):
+    name = models.CharField(max_length=256)
+    telegram_id = models.PositiveIntegerField()

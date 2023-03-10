@@ -24,6 +24,7 @@ bot = Bot(token="5826015068:AAGmVwCYBxSthSqAIEUbIhxCrWEgw5RkjqE")
 dp = Dispatcher(bot, storage=MemoryStorage())
 flags = {'ge': '🇩🇪'}
 
+
 class TableState(StatesGroup):
     title = State()
     url = State()

@@ -1,5 +1,10 @@
 from django.contrib import admin
-from base.models import Chanel
+from base.models import Chanel, TelegramAccount
+
+
+@admin.register(TelegramAccount)
+class SettingAdmin(admin.ModelAdmin):
+    list_display = ('name', 'telegram_id')
 
 
 @admin.register(Chanel)
