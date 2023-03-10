@@ -17,7 +17,7 @@ class Chanel(models.Model):
     county = models.CharField(choices=county_choices, max_length=100)
     spectators = models.IntegerField(default=0)
     subscribers = models.IntegerField(default=0)
-    notes = models.TextField(default='')
+    notes = models.TextField(default='', null=True, blank=True)
 
 
 class TelegramAccount(models.Model):
