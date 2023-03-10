@@ -3,10 +3,10 @@ from django.db import models
 
 class Chanel(models.Model):
     county_choices = [
-        ('gr', 'Gr'),
-        ('fi', 'Fi'),
-        ('no', 'No'),
-        ('ca', 'Ca'),
+        ('Gr', 'Gr'),
+        ('Fi', 'Fi'),
+        ('No', 'No'),
+        ('Ca', 'Ca'),
     ]
     title = models.CharField(max_length=256)
     link = models.CharField(max_length=256)
