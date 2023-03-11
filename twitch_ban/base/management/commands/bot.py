@@ -45,11 +45,11 @@ async def process_callback_button1(callback_query: CallbackQuery):
     for channel in Chanel.objects.all():
         delete_button = InlineKeyboardButton("Удалить канал", callback_data=f"delete_{channel.id}")
         msg_keyboard = InlineKeyboardMarkup().add(delete_button)
-        if channel.ccounty == 'Gr':
+        if channel.county == 'Gr':
             country = '🇩🇪'
-        elif channel.ccounty == 'Fi':
+        elif channel.county == 'Fi':
             country = '🇫🇮'
-        elif channel.ccounty == 'Ca':
+        elif channel.county == 'Ca':
             country = '🇨🇦'
         else:
             country = '🇳🇴'
