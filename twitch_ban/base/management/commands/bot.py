@@ -45,10 +45,18 @@ async def process_callback_button1(callback_query: CallbackQuery):
     for channel in Chanel.objects.all():
         delete_button = InlineKeyboardButton("Удалить канал", callback_data=f"delete_{channel.id}")
         msg_keyboard = InlineKeyboardMarkup().add(delete_button)
-        if channel.ban_date:
-            message = f"{channel.id} {channel.title} - 🇩🇪\n👀 {channel.spectators} ❤️ {channel.subscribers}\n{channel.link}\n❌ - {channel.ban_date}\nДобавлен - {channel.add_date}\n---------------------\n{channel.notes}"
+        if channel.ccounty == 'Gr':
+            country = '🇩🇪'
+        elif channel.ccounty == 'Fi':
+            country = '🇫🇮'
+        elif channel.ccounty == 'Ca':
+            country = '🇨🇦'
         else:
-            message = f"{channel.id} {channel.title} - 🇩🇪\n👀 {channel.spectators} ❤️ {channel.subscribers}\n{channel.link}\n✅ - Активен\nДобавлен - {channel.add_date}\n---------------------\n{channel.notes}"
+            country = '🇳🇴'
+        if channel.ban_date:
+            message = f"{channel.id} {channel.title} - {country}\n👀 {channel.spectators} ❤️ {channel.subscribers}\n{channel.link}\n❌ - {channel.ban_date}\nДобавлен - {channel.add_date}\n---------------------\n{channel.notes}"
+        else:
+            message = f"{channel.id} {channel.title} - {country}\n👀 {channel.spectators} ❤️ {channel.subscribers}\n{channel.link}\n✅ - Активен\nДобавлен - {channel.add_date}\n---------------------\n{channel.notes}"
         user_id = callback_query.from_user.id
         await bot.send_message(user_id, message, disable_web_page_preview=True, reply_markup=msg_keyboard)
 
