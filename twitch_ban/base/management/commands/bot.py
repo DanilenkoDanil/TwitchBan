@@ -41,7 +41,7 @@ async def start_command(message: types.Message):
 @dp.callback_query_handler(lambda c: c.data in ["list"])
 async def process_callback_button1(callback_query: CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
-
+    user_id = callback_query.from_user.id
     for channel in Chanel.objects.all():
         delete_button = InlineKeyboardButton("Удалить канал", callback_data=f"delete_{channel.id}")
         msg_keyboard = InlineKeyboardMarkup().add(delete_button)
@@ -57,8 +57,8 @@ async def process_callback_button1(callback_query: CallbackQuery):
             message = f"{channel.id} {channel.title} - {country}\n👀 {channel.spectators} ❤️ {channel.subscribers}\n{channel.link}\n❌ - {channel.ban_date}\nДобавлен - {channel.add_date}\n---------------------\n{channel.notes}"
         else:
             message = f"{channel.id} {channel.title} - {country}\n👀 {channel.spectators} ❤️ {channel.subscribers}\n{channel.link}\n✅ - Активен\nДобавлен - {channel.add_date}\n---------------------\n{channel.notes}"
-        user_id = callback_query.from_user.id
         await bot.send_message(user_id, message, disable_web_page_preview=True, reply_markup=msg_keyboard)
+    await bot.send_message(user_id, "Готово.", reply_markup=keyboard)
 
 
 @dp.callback_query_handler(lambda c: "delete" in c.data)
