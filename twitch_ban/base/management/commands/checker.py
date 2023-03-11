@@ -52,7 +52,12 @@ def main():
                 continue
             username = str(channel.link).split('/')[-1]
             print(username)
-            check_result = channel_check(username)
+            try:
+                check_result = channel_check(username)
+            except Exception as e:
+                print(e)
+                time.sleep(60)
+                continue
             print(check_result)
             if not check_result:
                 channel.ban = True
