@@ -9,5 +9,5 @@ class SettingAdmin(admin.ModelAdmin):
 
 @admin.register(Chanel)
 class SettingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'link', 'spectators', 'ban', 'check_date', 'ban_date', 'county')
+    list_display = ('title', 'link', 'spectators', 'subscribers', 'ban', 'check_date', 'ban_date', 'county')
     search_fields = ('title', 'link', 'ban')
